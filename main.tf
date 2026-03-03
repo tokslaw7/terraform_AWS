@@ -45,3 +45,23 @@ resource "aws_route_table_association" "terraform_demo_route_table_association" 
   subnet_id      = aws_subnet.terraform_demo_subnet.id
   route_table_id = aws_route_table.terraform_demo_route_table.id
 }
+
+resource "aws_security_group" "terraform_demo_sg" {
+  name        = "terraform-demo-sg"
+  description = "Allow SSH and HTTP traffic-security group for Terraform demo"
+  vpc_id      = aws_vpc.terraform_demo_vpc.id
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
