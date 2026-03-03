@@ -66,19 +66,25 @@ resource "aws_security_group" "terraform_demo_sg" {
   }
 }
 
-# resource "aws_instance" "terraform_demo_instance" {
-#   ami           = data.aws_ami.ubuntu.id
-#   instance_type = "t3.micro"
-#   subnet_id     = aws_subnet.terraform_demo_subnet.id
-#   security_groups = [aws_security_group.terraform_demo_sg.name]
-
-#   tags = {
-#     Name = "terraform-demo-instance"
-#   }
-# }
-
 resource "aws_key_pair" "deploy_key" {
   key_name   = "terraform_demo_key"
   public_key = file("~/SSH/terraform_demo_key.pub")
   
+}
+
+resource "aws_instance" "terraform_demo_instance" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  subnet_id     = aws_subnet.terraform_demo_subnet.id
+  security_groups = [aws_security_group.terraform_demo_sg.name]
+
+  tags = {
+    Name = "terraform-demo-instance"
+  }
+
+  key_name = aws_key_pair.deploy_key.key_name
+
+  root_block_device {
+    volume_size = 10
+  }
 }
