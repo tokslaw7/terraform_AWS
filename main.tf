@@ -75,16 +75,13 @@ resource "aws_key_pair" "deploy_key" {
 resource "aws_instance" "terraform_demo_instance" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
+  key_name = aws_key_pair.deploy_key.key_name
   subnet_id     = aws_subnet.terraform_demo_subnet.id
   security_groups = [aws_security_group.terraform_demo_sg.name]
-
+root_block_device {
+    volume_size = 10
+}
   tags = {
     Name = "terraform-demo-instance"
-  }
-
-  key_name = aws_key_pair.deploy_key.key_name
-
-  root_block_device {
-    volume_size = 10
-  }
+  } 
 }
