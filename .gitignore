@@ -1,0 +1,29 @@
+# Terraform local files
+.terraform/
+.terraform.tfstate.lock.info
+
+# Terraform state files (contain sensitive data)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform variable files (may contain secrets)
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# AWS credentials and access keys
+*_accessKeys*
+*_credentials*
+*.pem
+*.key
+
+# OS
+.DS_Store
