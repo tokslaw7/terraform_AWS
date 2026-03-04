@@ -1,7 +1,7 @@
-cat << EOF >> ~/Users/taborg/SSH/config
+cat >> ~/SSH/config << EOF
 
 Host ${hostname}
     HostName ${hostname}
     User ${user}
     IdentityFile ${IdentityFile}
-    EOF
+EOF
