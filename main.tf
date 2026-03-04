@@ -88,7 +88,7 @@ resource "aws_instance" "terraform_demo_instance" {
   }
 
   provisioner "local-exec" {
-    command = templatefile("mac-ssh-config.tpl", {
+    command = templatefile("${var.host_os}-ssh-config.tpl", {
       hostname     = self.public_ip,
       user         = "ubuntu",
       IdentityFile = "~/SSH/terraform_demo_key"
