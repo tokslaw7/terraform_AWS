@@ -10,14 +10,14 @@ A 3-tier web application VPC with Public/Private subnets, an RDS database, and a
 - Deploy AWS resources and an EC2 instance that you can SSH into to have your own redeployable environment.
 
 ## Project Structure
-.
-├── modules/                # Reusable modules (VPC, EC2, S3, etc.)
-├── environments/           # Environment-specific variables (dev, prod)
-├── main.tf                 # Main entry point for Terraform
-├── variables.tf            # Input variable definitions
-├── outputs.tf              # Values to be printed after deployment
-├── providers.tf            # AWS Provider and Version constraints
-└── terraform.tfvars        # Secret/Specific variable values (Git ignored)
+`
+ - modules/                # Reusable modules (VPC, EC2, S3, etc.)
+ - environments/           # Environment-specific variables (dev, prod)
+ - main.tf                 # Main entry point for Terraform
+ - variables.tf            # Input variable definitions
+ - outputs.tf              # Values to be printed after deployment
+ - providers.tf            # AWS Provider and Version constraints
+ - terraform.tfvars        # Secret/Specific variable values (Git ignored)
 
 
 ## Prerequisites
